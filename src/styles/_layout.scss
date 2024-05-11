@@ -1,1 +1,39 @@
 // un reusable styles , styles regarding to layout
+
+.sidebar {
+  width: inherit;
+
+  &_logo-container {
+    a {
+      max-width: 12rem;
+    }
+  }
+
+  &_menu {
+    ul {
+      list-style-type: none;
+
+      a {
+        color: #666b7b;
+        font-size: 20px;
+        @include flexItemsCenter;
+        gap: 10px;
+
+        transition: all 0.2s linear;
+        -webkit-transition: all 0.2s linear;
+        -moz-transition: all 0.2s linear;
+        -ms-transition: all 0.2s linear;
+        -o-transition: all 0.2s linear;
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        &:hover {
+          color: #222;
+        }
+      }
+    }
+  }
+}

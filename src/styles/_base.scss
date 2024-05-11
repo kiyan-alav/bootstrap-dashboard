@@ -1,16 +1,26 @@
 // Variables & mixins & reset styles
 
-*, ::after, ::before{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+$bg-primary: #F7FAFF;
+
+@mixin flexItemsCenter{
+    display: flex;
+    align-items: center;
 }
 
-a{
-    text-decoration: none;
+
+*,
+::after,
+::before {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
 }
 
-img{
-    display: block;
-    width: 100%;
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  width: 100%;
 }
