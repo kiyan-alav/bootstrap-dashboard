@@ -1,4 +1,4 @@
-module.exports = {
+ module.exports = {
   pages: {
     "/": {
       entry: "index.html",
