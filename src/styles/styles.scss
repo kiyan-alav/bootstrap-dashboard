@@ -5,3 +5,10 @@
 body {
   background-color: $bg-primary;
 }
+
+.main{
+  td, th{
+    background-color: transparent;
+    color: #fff;
+  }
+}

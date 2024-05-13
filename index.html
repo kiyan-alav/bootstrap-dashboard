@@ -17,7 +17,7 @@
     <div class="container-fluid">
       <div class="row">
         <!-- Start Sidebar -->
-        <div class="col-lg-2 d-none d-lg-block">
+        <div class="col-lg-2 d-none d-lg-block p-0">
           <div class="shadow sidebar px-4 py-5 position-fixed h-100">
             <div class="sidebar_logo-container">
               <a href="/" class="d-block bg-white rounded-2 p-4">
@@ -25,7 +25,7 @@
               </a>
             </div>
             <div class="sidebar_menu mt-5 px-3">
-              <ul class="d-flex flex-column gap-3">
+              <ul class="d-flex flex-column gap-3 m-0 p-0">
                 <li>
                   <a href="">
                     <svg
@@ -99,7 +99,7 @@
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div
-                class="offcanvas offcanvas-start d-lg-none"
+                class="offcanvas offcanvas-start d-lg-none w-75"
                 tabindex="-1"
                 id="offcanvasNavbar"
                 aria-labelledby="offcanvasNavbarLabel"
@@ -115,7 +115,7 @@
                     </a>
                   </div>
                   <div class="sidebar_menu mt-5 px-3">
-                    <ul class="d-flex flex-column gap-3">
+                    <ul class="d-flex flex-column gap-3 m-0 p-0">
                       <li>
                         <a href="">
                           <svg
@@ -174,7 +174,7 @@
             </div>
           </nav>
           <!-- End Sidebar Mobile -->
-          <main class="container-fluid p-3">
+          <main class="container-fluid p-3 main">
             <div class="row g-3">
               <div class="col-12 col-md-6">
                 <div
@@ -220,8 +220,76 @@
                   <h4>25</h4>
                 </div>
               </div>
-              <div class="col-12 col-md-6 bg-dark">3</div>
-              <div class="col-12 col-md-6 bg-warning">4</div>
+              <div class="col-12 col-md-6">
+                <div
+                  class="table-responsive shadow-sm shadow-lg bg-info p-3 rounded-3"
+                >
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div
+                  class="table-responsive shadow-sm shadow-lg bg-danger p-3 rounded-3"
+                >
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </main>
         </div>
