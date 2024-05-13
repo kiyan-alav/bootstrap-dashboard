@@ -1,12 +1,12 @@
- module.exports = {
+module.exports = {
   pages: {
     "/": {
       entry: "index.html",
     },
-    "/about": {
+    "/products": {
       entry: "src/pages/products.html",
     },
-    "/contact": {
+    "/users": {
       entry: "src/pages/users.html",
     },
   },
