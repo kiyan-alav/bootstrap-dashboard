@@ -1,6 +1,6 @@
 export default function users() {
-  const pageHtml = `
-    <div class="container-fluid">
+    const pageHtml = `
+    <div class="container-fluid" id="test2">
     <div class="row">
       <div class="col-lg-2 d-none d-lg-block p-0">
         <div class="shadow sidebar px-4 py-5 position-fixed h-100">
@@ -251,5 +251,9 @@ export default function users() {
   </div>
       `;
 
-  return pageHtml;
+    const test2 = document.querySelector("#test2")
+
+    console.log(test2)
+
+    return pageHtml;
 }

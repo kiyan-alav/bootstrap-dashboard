@@ -282,5 +282,10 @@ export default function home() {
   </div>
     `;
 
+  const totalUser = document.querySelector(".total-users")
+
+  console.log(totalUser)
+
   return pageHtml;
 }
+

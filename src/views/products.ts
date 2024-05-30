@@ -1,6 +1,6 @@
-export default function products(){
+export default function products() {
     const pageHtml = `
-    <div class="container-fluid">
+    <div class="container-fluid" id="test">
     <div class="row" id="test">
       <div class="col-lg-2 d-none d-lg-block p-0">
         <div class="shadow sidebar px-4 py-5 position-fixed h-100">
@@ -251,6 +251,10 @@ export default function products(){
     </div>
   </div>
     `
+
+    const test1 = document.querySelector("#test")
+
+    console.log(test1)
 
     return pageHtml
 }
