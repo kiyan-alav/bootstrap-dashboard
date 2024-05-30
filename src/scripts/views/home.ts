@@ -1,6 +1,11 @@
-export default function users() {
-    const pageHtml = `
-    <div class="container-fluid" id="test2">
+import { getAllProducts } from "../services/products";
+import { getAllUsers } from "../services/users";
+import { Products } from "../types/product.types";
+import { User } from "../types/user.types";
+
+export default function home() {
+  const pageHtml = `
+    <div class="container-fluid">
     <div class="row">
       <div class="col-lg-2 d-none d-lg-block p-0">
         <div class="shadow sidebar px-4 py-5 position-fixed h-100">
@@ -69,7 +74,7 @@ export default function users() {
       <div class="col-lg-10">
         <nav class="navbar navbar-expand-lg">
           <div class="container-fluid p-3">
-            <a class="navbar-brand" href="#">User Page</a>
+            <a class="navbar-brand" href="#">Bootstrap Dashboard</a>
             <button
               class="navbar-toggler"
               type="button"
@@ -159,89 +164,88 @@ export default function users() {
             </div>
           </div>
         </nav>
-        <main class="container-fluid p-3">
-          <div class="form-floating w-50 mx-auto">
-            <input
-              type="search"
-              class="form-control"
-              id="floatingInput"
-              placeholder="Search..."
-            />
-            <label for="floatingInput">Search</label>
-          </div>
-          <div class="container mx-auto mt-4">
-            <div class="row justify-content-center g-3">
-              <div class="col-12 col-md-4">
-                <div
-                  class="d-flex flex-column gap-2 shadow-sm p-3 rounded-3 bg-warning"
-                >
-                  <div
-                    class="d-flex align-items-center justify-content-between"
+        <main class="container-fluid p-3 main">
+          <div class="row g-3">
+            <div class="col-12 col-md-6">
+              <div
+                class="shadow-sm shadow-lg p-3 rounded-3 d-flex flex-column align-items-center gap-3 bg-primary text-white"
+              >
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    class="bi bi-basket"
+                    viewBox="0 0 16 16"
                   >
-                    <p>Email:</p>
-                    <p>email@email.com</p>
-                  </div>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p>Username:</p>
-                    <p>@kiyanalav</p>
-                  </div>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p>password:</p>
-                    <p>********</p>
-                  </div>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p>Name:</p>
-                    <p>Kiyan Alavi</p>
-                  </div>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p>Phone:</p>
-                    <p>+98 936 558 4552</p>
-                  </div>
+                    <path
+                      d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9zM1 7v1h14V7zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5"
+                    />
+                  </svg>
                 </div>
+                <h3 class="fs-5 m-0">Count Of Products</h3>
+                <h4 class="total-products">-</h4>
               </div>
-              <div class="col-12 col-md-4">
-                <div
-                  class="d-flex flex-column gap-2 shadow-sm p-3 rounded-3 bg-success"
-                >
-                  <div
-                    class="d-flex align-items-center justify-content-between"
+            </div>
+            <div class="col-12 col-md-6">
+              <div
+                class="shadow-sm shadow-lg p-3 rounded-3 d-flex flex-column align-items-center gap-3 bg-success text-white"
+              >
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    class="bi bi-people-fill"
+                    viewBox="0 0 16 16"
                   >
-                    <p>Email:</p>
-                    <p>email@email.com</p>
-                  </div>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p>Username:</p>
-                    <p>@kiyanalav</p>
-                  </div>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p>password:</p>
-                    <p>********</p>
-                  </div>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p>Name:</p>
-                    <p>Kiyan Alavi</p>
-                  </div>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p>Phone:</p>
-                    <p>+98 936 558 4552</p>
-                  </div>
+                    <path
+                      d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"
+                    />
+                  </svg>
                 </div>
+                <h3 class="fs-5 m-0">Count Of Users</h3>
+                <h4 class="total-users">-</h4>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div
+                class="table-responsive shadow-sm shadow-lg bg-info p-3 rounded-3"
+              >
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th scope="col">Id</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Category</th>
+                      <th scope="col">Price ($)</th>
+                    </tr>
+                  </thead>
+                  <tbody id="product-content">
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div
+                class="table-responsive shadow-sm shadow-lg bg-danger p-3 rounded-3"
+              >
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th scope="col">Id</th>
+                      <th scope="col">Full Name</th>
+                      <th scope="col">Username</th>
+                      <th scope="col">Email</th>
+                    </tr>
+                  </thead>
+                  <tbody id="user-content">
+                    
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -249,11 +253,66 @@ export default function users() {
       </div>
     </div>
   </div>
-      `;
+    `;
 
-    const test2 = document.querySelector("#test2")
+  getAllProducts()
+    .then((products) => {
+      const productCountElem = document.querySelector(
+        ".total-products"
+      ) as HTMLElement;
+      const productContentElem = document.querySelector(
+        "#product-content"
+      ) as HTMLElement;
 
-    console.log(test2)
+      if (productCountElem && productContentElem) {
+        productCountElem.textContent = products.length.toString();
+        renderProducts(products, productContentElem);
+      } else {
+        console.error("Product elements not found.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching products:", error);
+    });
 
-    return pageHtml;
+  getAllUsers().then((users) => {
+    const userCountElem = document.querySelector(".total-users");
+    const userContentElem = document.querySelector(
+      "#user-content"
+    ) as HTMLElement;
+    if (userCountElem && userContentElem) {
+      userCountElem.textContent = users.length.toString();
+      renderUsers(users, userContentElem);
+    }
+  });
+
+  return pageHtml;
+}
+
+function renderProducts(products: Products[], container: HTMLElement) {
+  products.forEach((product) => {
+    const template = `
+      <tr>
+        <th scope="row">${product.id}</th>
+        <td>${product.title}</td>
+        <td>${product.category}</td>
+        <td>${product.price}</td>
+      </tr>
+    `;
+    container.insertAdjacentHTML("beforeend", template);
+  });
+}
+
+function renderUsers(users: User[], container: HTMLElement) {
+  users.forEach((user) => {
+    const template = `
+      <tr>
+        <th scope="row">${user.id}</th>
+        <td>${user.name.firstname} ${user.name.lastname}</td>
+        <td>${user.username}</td>
+        <td>${user.email}</td>
+      </tr>
+    `;
+    container.insertAdjacentHTML("beforeend", template);
+  });
 }

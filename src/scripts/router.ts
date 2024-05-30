@@ -1,6 +1,6 @@
-import home from "../views/home";
-import users from "../views/users";
-import products from "../views/products";
+import home from "./views/home";
+import users from "./views/users";
+import products from "./views/products";
 
 interface Route {
   path: string;

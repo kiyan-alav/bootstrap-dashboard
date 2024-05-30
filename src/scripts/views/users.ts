@@ -1,7 +1,7 @@
-export default function products() {
+export default function users() {
     const pageHtml = `
-    <div class="container-fluid" id="test">
-    <div class="row" id="test">
+    <div class="container-fluid" id="test2">
+    <div class="row">
       <div class="col-lg-2 d-none d-lg-block p-0">
         <div class="shadow sidebar px-4 py-5 position-fixed h-100">
           <div class="sidebar_logo-container">
@@ -69,7 +69,7 @@ export default function products() {
       <div class="col-lg-10">
         <nav class="navbar navbar-expand-lg">
           <div class="container-fluid p-3">
-            <a class="navbar-brand" href="#">Product Page</a>
+            <a class="navbar-brand" href="#">User Page</a>
             <button
               class="navbar-toggler"
               type="button"
@@ -159,9 +159,8 @@ export default function products() {
             </div>
           </div>
         </nav>
-        <!-- End Sidebar Mobile -->
         <main class="container-fluid p-3">
-          <div class="form-floating w-75 mx-auto">
+          <div class="form-floating w-50 mx-auto">
             <input
               type="search"
               class="form-control"
@@ -170,77 +169,77 @@ export default function products() {
             />
             <label for="floatingInput">Search</label>
           </div>
-          <div class="container mt-4">
-            <div class="row justify-content-between g-3">
+          <div class="container mx-auto mt-4">
+            <div class="row justify-content-center g-3">
               <div class="col-12 col-md-4">
-                <div class="shadow-sm rounded-3 product-container_box">
-                  <div class="product-banner_img">
-                    <img
-                      src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                      class="w-100 h-100 d-block"
-                      alt=""
-                    />
-                  </div>
-                  <p class="m-0">product name</p>
+                <div
+                  class="d-flex flex-column gap-2 shadow-sm p-3 rounded-3 bg-warning"
+                >
                   <div
-                    class="d-flex align-items-center justify-content-between w-100"
+                    class="d-flex align-items-center justify-content-between"
                   >
-                    <span>700$</span>
-                    <span>4/5</span>
+                    <p>Email:</p>
+                    <p>email@email.com</p>
+                  </div>
+                  <div
+                    class="d-flex align-items-center justify-content-between"
+                  >
+                    <p>Username:</p>
+                    <p>@kiyanalav</p>
+                  </div>
+                  <div
+                    class="d-flex align-items-center justify-content-between"
+                  >
+                    <p>password:</p>
+                    <p>********</p>
+                  </div>
+                  <div
+                    class="d-flex align-items-center justify-content-between"
+                  >
+                    <p>Name:</p>
+                    <p>Kiyan Alavi</p>
+                  </div>
+                  <div
+                    class="d-flex align-items-center justify-content-between"
+                  >
+                    <p>Phone:</p>
+                    <p>+98 936 558 4552</p>
                   </div>
                 </div>
               </div>
               <div class="col-12 col-md-4">
-                <div class="shadow-sm rounded-3 product-container_box">
-                  <div class="product-banner_img">
-                    <img
-                      src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                      class="w-100 h-100 d-block"
-                      alt=""
-                    />
-                  </div>
-                  <p class="m-0">product name</p>
+                <div
+                  class="d-flex flex-column gap-2 shadow-sm p-3 rounded-3 bg-success"
+                >
                   <div
-                    class="d-flex align-items-center justify-content-between w-100"
+                    class="d-flex align-items-center justify-content-between"
                   >
-                    <span>700$</span>
-                    <span>4/5</span>
+                    <p>Email:</p>
+                    <p>email@email.com</p>
                   </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-4">
-                <div class="shadow-sm rounded-3 product-container_box">
-                  <div class="product-banner_img">
-                    <img
-                      src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                      class="w-100 h-100 d-block"
-                      alt=""
-                    />
-                  </div>
-                  <p class="m-0">product name</p>
                   <div
-                    class="d-flex align-items-center justify-content-between w-100"
+                    class="d-flex align-items-center justify-content-between"
                   >
-                    <span>700$</span>
-                    <span>4/5</span>
+                    <p>Username:</p>
+                    <p>@kiyanalav</p>
                   </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-4">
-                <div class="shadow-sm rounded-3 product-container_box">
-                  <div class="product-banner_img">
-                    <img
-                      src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                      class="w-100 h-100 d-block"
-                      alt=""
-                    />
-                  </div>
-                  <p class="m-0">product name</p>
                   <div
-                    class="d-flex align-items-center justify-content-between w-100"
+                    class="d-flex align-items-center justify-content-between"
                   >
-                    <span>700$</span>
-                    <span>4/5</span>
+                    <p>password:</p>
+                    <p>********</p>
+                  </div>
+                  <div
+                    class="d-flex align-items-center justify-content-between"
+                  >
+                    <p>Name:</p>
+                    <p>Kiyan Alavi</p>
+                  </div>
+                  <div
+                    class="d-flex align-items-center justify-content-between"
+                  >
+                    <p>Phone:</p>
+                    <p>+98 936 558 4552</p>
                   </div>
                 </div>
               </div>
@@ -250,11 +249,9 @@ export default function products() {
       </div>
     </div>
   </div>
-    `
+      `;
 
-    const test1 = document.querySelector("#test")
 
-    console.log(test1)
 
-    return pageHtml
+    return pageHtml;
 }

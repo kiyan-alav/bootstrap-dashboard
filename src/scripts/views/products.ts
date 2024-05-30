@@ -1,7 +1,7 @@
-export default function home() {
-  const pageHtml = `
-    <div class="container-fluid">
-    <div class="row">
+export default function products() {
+    const pageHtml = `
+    <div class="container-fluid" id="test">
+    <div class="row" id="test">
       <div class="col-lg-2 d-none d-lg-block p-0">
         <div class="shadow sidebar px-4 py-5 position-fixed h-100">
           <div class="sidebar_logo-container">
@@ -69,7 +69,7 @@ export default function home() {
       <div class="col-lg-10">
         <nav class="navbar navbar-expand-lg">
           <div class="container-fluid p-3">
-            <a class="navbar-brand" href="#">Bootstrap Dashboard</a>
+            <a class="navbar-brand" href="#">Product Page</a>
             <button
               class="navbar-toggler"
               type="button"
@@ -159,120 +159,90 @@ export default function home() {
             </div>
           </div>
         </nav>
-        <main class="container-fluid p-3 main">
-          <div class="row g-3">
-            <div class="col-12 col-md-6">
-              <div
-                class="shadow-sm shadow-lg p-3 rounded-3 d-flex flex-column align-items-center gap-3 bg-primary text-white"
-              >
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    class="bi bi-basket"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9zM1 7v1h14V7zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5"
+        <!-- End Sidebar Mobile -->
+        <main class="container-fluid p-3">
+          <div class="form-floating w-75 mx-auto">
+            <input
+              type="search"
+              class="form-control"
+              id="floatingInput"
+              placeholder="Search..."
+            />
+            <label for="floatingInput">Search</label>
+          </div>
+          <div class="container mt-4">
+            <div class="row justify-content-between g-3">
+              <div class="col-12 col-md-4">
+                <div class="shadow-sm rounded-3 product-container_box">
+                  <div class="product-banner_img">
+                    <img
+                      src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+                      class="w-100 h-100 d-block"
+                      alt=""
                     />
-                  </svg>
-                </div>
-                <h3 class="fs-5 m-0">Count Of Products</h3>
-                <h4 class="total-products">25</h4>
-              </div>
-            </div>
-            <div class="col-12 col-md-6">
-              <div
-                class="shadow-sm shadow-lg p-3 rounded-3 d-flex flex-column align-items-center gap-3 bg-success text-white"
-              >
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    class="bi bi-people-fill"
-                    viewBox="0 0 16 16"
+                  </div>
+                  <p class="m-0">product name</p>
+                  <div
+                    class="d-flex align-items-center justify-content-between w-100"
                   >
-                    <path
-                      d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"
-                    />
-                  </svg>
+                    <span>700$</span>
+                    <span>4/5</span>
+                  </div>
                 </div>
-                <h3 class="fs-5 m-0">Count Of Users</h3>
-                <h4 class="total-users">25</h4>
               </div>
-            </div>
-            <div class="col-12 col-md-6">
-              <div
-                class="table-responsive shadow-sm shadow-lg bg-info p-3 rounded-3"
-              >
-                <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">First</th>
-                      <th scope="col">Last</th>
-                      <th scope="col">Handle</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td colspan="2">Larry the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div class="col-12 col-md-4">
+                <div class="shadow-sm rounded-3 product-container_box">
+                  <div class="product-banner_img">
+                    <img
+                      src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+                      class="w-100 h-100 d-block"
+                      alt=""
+                    />
+                  </div>
+                  <p class="m-0">product name</p>
+                  <div
+                    class="d-flex align-items-center justify-content-between w-100"
+                  >
+                    <span>700$</span>
+                    <span>4/5</span>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-12 col-md-6">
-              <div
-                class="table-responsive shadow-sm shadow-lg bg-danger p-3 rounded-3"
-              >
-                <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">First</th>
-                      <th scope="col">Last</th>
-                      <th scope="col">Handle</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td colspan="2">Larry the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div class="col-12 col-md-4">
+                <div class="shadow-sm rounded-3 product-container_box">
+                  <div class="product-banner_img">
+                    <img
+                      src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+                      class="w-100 h-100 d-block"
+                      alt=""
+                    />
+                  </div>
+                  <p class="m-0">product name</p>
+                  <div
+                    class="d-flex align-items-center justify-content-between w-100"
+                  >
+                    <span>700$</span>
+                    <span>4/5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="shadow-sm rounded-3 product-container_box">
+                  <div class="product-banner_img">
+                    <img
+                      src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+                      class="w-100 h-100 d-block"
+                      alt=""
+                    />
+                  </div>
+                  <p class="m-0">product name</p>
+                  <div
+                    class="d-flex align-items-center justify-content-between w-100"
+                  >
+                    <span>700$</span>
+                    <span>4/5</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -280,12 +250,7 @@ export default function home() {
       </div>
     </div>
   </div>
-    `;
+    `
 
-  const totalUser = document.querySelector(".total-users")
-
-  console.log(totalUser)
-
-  return pageHtml;
+    return pageHtml
 }
-
