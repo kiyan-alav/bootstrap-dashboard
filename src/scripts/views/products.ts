@@ -1,5 +1,8 @@
+import { getAllProducts } from "../services/products";
+import { Products } from "../types/product.types";
+
 export default function products() {
-    const pageHtml = `
+  const pageHtml = `
     <div class="container-fluid" id="test">
     <div class="row" id="test">
       <div class="col-lg-2 d-none d-lg-block p-0">
@@ -171,86 +174,58 @@ export default function products() {
             <label for="floatingInput">Search</label>
           </div>
           <div class="container mt-4">
-            <div class="row justify-content-between g-3">
-              <div class="col-12 col-md-4">
-                <div class="shadow-sm rounded-3 product-container_box">
-                  <div class="product-banner_img">
-                    <img
-                      src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                      class="w-100 h-100 d-block"
-                      alt=""
-                    />
-                  </div>
-                  <p class="m-0">product name</p>
-                  <div
-                    class="d-flex align-items-center justify-content-between w-100"
-                  >
-                    <span>700$</span>
-                    <span>4/5</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-4">
-                <div class="shadow-sm rounded-3 product-container_box">
-                  <div class="product-banner_img">
-                    <img
-                      src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                      class="w-100 h-100 d-block"
-                      alt=""
-                    />
-                  </div>
-                  <p class="m-0">product name</p>
-                  <div
-                    class="d-flex align-items-center justify-content-between w-100"
-                  >
-                    <span>700$</span>
-                    <span>4/5</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-4">
-                <div class="shadow-sm rounded-3 product-container_box">
-                  <div class="product-banner_img">
-                    <img
-                      src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                      class="w-100 h-100 d-block"
-                      alt=""
-                    />
-                  </div>
-                  <p class="m-0">product name</p>
-                  <div
-                    class="d-flex align-items-center justify-content-between w-100"
-                  >
-                    <span>700$</span>
-                    <span>4/5</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-4">
-                <div class="shadow-sm rounded-3 product-container_box">
-                  <div class="product-banner_img">
-                    <img
-                      src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                      class="w-100 h-100 d-block"
-                      alt=""
-                    />
-                  </div>
-                  <p class="m-0">product name</p>
-                  <div
-                    class="d-flex align-items-center justify-content-between w-100"
-                  >
-                    <span>700$</span>
-                    <span>4/5</span>
-                  </div>
-                </div>
-              </div>
+            <div class="row  g-3" id="product-container">
+            
             </div>
           </div>
         </main>
       </div>
     </div>
   </div>
+    `;
+
+    getAllProducts()
+    .then((products) => {
+      const productContainer = document.querySelector(
+        "#product-container"
+      ) as HTMLElement;
+
+      if (productContainer) {
+        renderProducts(products, productContainer);
+      } else {
+        console.error("Product elements not found.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching products:", error);
+    });
+
+  return pageHtml;
+}
+
+function renderProducts(products: Products[], container: HTMLElement){
+  products.forEach(product => {
+    const template = `
+    <div class="col-12 col-md-4">
+      <div class="shadow-sm rounded-3 product-container_box h-100">
+        <div class="product-banner_img">
+          <img
+            src=${product.image}
+            class="w-100 h-100 d-block"
+            alt=""
+          />
+        </div>
+        <p class="m-0 my-auto">${product.title}</p>
+        <div
+          class="d-flex align-items-center justify-content-between w-100"
+        >
+          <span>${product.price}$</span>
+          <span>${product.rating.rate}/5</span>
+        </div>
+      </div>
+  </div>
     `
 
-    return pageHtml
+    container.insertAdjacentHTML("beforeend", template)
+  })
 }

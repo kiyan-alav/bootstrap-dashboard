@@ -1,5 +1,8 @@
+import { getAllUsers } from "../services/users";
+import { User } from "../types/user.types";
+
 export default function users() {
-    const pageHtml = `
+  const pageHtml = `
     <div class="container-fluid" id="test2">
     <div class="row">
       <div class="col-lg-2 d-none d-lg-block p-0">
@@ -170,79 +173,8 @@ export default function users() {
             <label for="floatingInput">Search</label>
           </div>
           <div class="container mx-auto mt-4">
-            <div class="row justify-content-center g-3">
-              <div class="col-12 col-md-4">
-                <div
-                  class="d-flex flex-column gap-2 shadow-sm p-3 rounded-3 bg-warning"
-                >
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p>Email:</p>
-                    <p>email@email.com</p>
-                  </div>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p>Username:</p>
-                    <p>@kiyanalav</p>
-                  </div>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p>password:</p>
-                    <p>********</p>
-                  </div>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p>Name:</p>
-                    <p>Kiyan Alavi</p>
-                  </div>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p>Phone:</p>
-                    <p>+98 936 558 4552</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-4">
-                <div
-                  class="d-flex flex-column gap-2 shadow-sm p-3 rounded-3 bg-success"
-                >
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p>Email:</p>
-                    <p>email@email.com</p>
-                  </div>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p>Username:</p>
-                    <p>@kiyanalav</p>
-                  </div>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p>password:</p>
-                    <p>********</p>
-                  </div>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p>Name:</p>
-                    <p>Kiyan Alavi</p>
-                  </div>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p>Phone:</p>
-                    <p>+98 936 558 4552</p>
-                  </div>
-                </div>
-              </div>
+            <div class="row g-3" id="user-container">
+              
             </div>
           </div>
         </main>
@@ -251,7 +183,59 @@ export default function users() {
   </div>
       `;
 
+  getAllUsers().then((users) => {
+    const userContainer = document.querySelector(
+      "#user-container"
+    ) as HTMLElement;
+    if (userContainer) {
+      renderUsers(users, userContainer);
+    }
+  });
 
+  return pageHtml;
+}
 
-    return pageHtml;
+function renderUsers(users: User[], container: HTMLElement) {
+  users.forEach((user) => {
+    const template = `
+    <div class="col-12 col-md-4">
+      <div
+        class="d-flex flex-column gap-2 shadow-sm p-3 rounded-3 ${user.id % 2 === 0 ? "bg-warning" : "bg-success"}"
+      >
+        <div
+          class="d-flex align-items-center justify-content-between"
+        >
+          <p>Email:</p>
+          <p>${user.email}</p>
+        </div>
+        <div
+          class="d-flex align-items-center justify-content-between"
+        >
+          <p>Username:</p>
+          <p>@${user.username}</p>
+        </div>
+        <div
+          class="d-flex align-items-center justify-content-between"
+        >
+          <p>password:</p>
+          <p>${'*'.repeat(user.password.length)}</p>
+        </div>
+        <div
+          class="d-flex align-items-center justify-content-between"
+        >
+          <p>Name:</p>
+          <p>${user.name.firstname} ${user.name.lastname}</p>
+        </div>
+        <div
+          class="d-flex align-items-center justify-content-between"
+        >
+          <p>Phone:</p>
+          <p>${user.phone}</p>
+        </div>
+      </div>
+  </div>
+    `;
+
+    container.insertAdjacentHTML("beforeend", template)
+  });
 }

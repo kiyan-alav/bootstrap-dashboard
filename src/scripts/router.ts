@@ -5,6 +5,7 @@ import products from "./views/products";
 interface Route {
   path: string;
   view: string;
+  title: string;
 }
 
 const navigateTo = (url: string) => {
@@ -14,9 +15,9 @@ const navigateTo = (url: string) => {
 
 const router = async () => {
   const routes: Route[] = [
-    { path: "/", view: home() },
-    { path: "/users", view: users() },
-    { path: "/products", view: products() },
+    { path: "/", view: home(), title: "Home" },
+    { path: "/users", view: users(), title: "Users" },
+    { path: "/products", view: products(), title: "Products" },
   ];
 
   const potentialMatches = routes.map((route) => {
@@ -37,6 +38,7 @@ const router = async () => {
 
   const view = await match.route.view;
   document.querySelector("#app")!.innerHTML = view;
+  document.title = match.route.title;
 };
 
 window.addEventListener("popstate", router);
