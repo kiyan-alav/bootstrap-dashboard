@@ -1,5 +1,6 @@
 import { getAllUsers } from "../services/users";
 import { User } from "../types/user.types";
+import { getUsersData, setUsersData } from "../store/userStore";
 
 export default function users() {
   const pageHtml = `
@@ -166,7 +167,7 @@ export default function users() {
           <div class="form-floating w-50 mx-auto">
             <input
               type="search"
-              class="form-control"
+              class="form-control search-user"
               id="floatingInput"
               placeholder="Search..."
             />
@@ -182,14 +183,32 @@ export default function users() {
     </div>
   </div>
       `;
-
   getAllUsers().then((users) => {
+    setUsersData(users);
     const userContainer = document.querySelector(
       "#user-container"
     ) as HTMLElement;
     if (userContainer) {
       renderUsers(users, userContainer);
     }
+  });
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.querySelector(
+      ".search-user"
+    ) as HTMLInputElement;
+    searchInput?.addEventListener("input", (e: Event) => {
+      const searchTerm = (e.target as HTMLInputElement).value;
+      const filteredUsers = getUsersData().filter((user) =>
+        user.name.firstname.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      const userContainer = document.querySelector(
+        "#user-container"
+      ) as HTMLElement;
+      if (userContainer) {
+        renderUsers(filteredUsers, userContainer);
+      }
+    });
   });
 
   return pageHtml;
@@ -200,7 +219,9 @@ function renderUsers(users: User[], container: HTMLElement) {
     const template = `
     <div class="col-12 col-md-4">
       <div
-        class="d-flex flex-column gap-2 shadow-sm p-3 rounded-3 ${user.id % 2 === 0 ? "bg-warning" : "bg-success"}"
+        class="d-flex flex-column gap-2 shadow-sm p-3 rounded-3 ${
+          user.id % 2 === 0 ? "bg-warning" : "bg-success"
+        }"
       >
         <div
           class="d-flex align-items-center justify-content-between"
@@ -218,7 +239,7 @@ function renderUsers(users: User[], container: HTMLElement) {
           class="d-flex align-items-center justify-content-between"
         >
           <p>password:</p>
-          <p>${'*'.repeat(user.password.length)}</p>
+          <p>${"*".repeat(user.password.length)}</p>
         </div>
         <div
           class="d-flex align-items-center justify-content-between"
@@ -236,6 +257,6 @@ function renderUsers(users: User[], container: HTMLElement) {
   </div>
     `;
 
-    container.insertAdjacentHTML("beforeend", template)
+    container.insertAdjacentHTML("beforeend", template);
   });
 }

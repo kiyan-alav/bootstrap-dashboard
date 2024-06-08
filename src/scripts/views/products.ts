@@ -1,9 +1,10 @@
 import { getAllProducts } from "../services/products";
+import { getProductData, setProductsData } from "../store/productStore";
 import { Products } from "../types/product.types";
 
 export default function products() {
   const pageHtml = `
-    <div class="container-fluid" id="test">
+    <div class="container-fluid">
     <div class="row" id="test">
       <div class="col-lg-2 d-none d-lg-block p-0">
         <div class="shadow sidebar px-4 py-5 position-fixed h-100">
@@ -167,7 +168,7 @@ export default function products() {
           <div class="form-floating w-75 mx-auto">
             <input
               type="search"
-              class="form-control"
+              class="form-control search-product"
               id="floatingInput"
               placeholder="Search..."
             />
@@ -184,8 +185,9 @@ export default function products() {
   </div>
     `;
 
-    getAllProducts()
+  getAllProducts()
     .then((products) => {
+      setProductsData(products);
       const productContainer = document.querySelector(
         "#product-container"
       ) as HTMLElement;
@@ -200,11 +202,30 @@ export default function products() {
       console.error("Error fetching products:", error);
     });
 
+  window.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.querySelector(
+      ".search-product"
+    ) as HTMLInputElement;
+    searchInput.addEventListener("input", (e: Event) => {
+      const searchTerm = (e.target as HTMLInputElement).value;
+      const filteredProducts = getProductData().filter((product) =>
+        product.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      const productContainer = document.querySelector(
+        "#product-container"
+      ) as HTMLElement;
+      if (productContainer) {
+        renderProducts(filteredProducts, productContainer);
+      }
+    });
+  });
+
   return pageHtml;
 }
 
-function renderProducts(products: Products[], container: HTMLElement){
-  products.forEach(product => {
+function renderProducts(products: Products[], container: HTMLElement) {
+  container.innerHTML = "";
+  products.forEach((product) => {
     const template = `
     <div class="col-12 col-md-4">
       <div class="shadow-sm rounded-3 product-container_box h-100">
@@ -224,8 +245,8 @@ function renderProducts(products: Products[], container: HTMLElement){
         </div>
       </div>
   </div>
-    `
+    `;
 
-    container.insertAdjacentHTML("beforeend", template)
-  })
+    container.insertAdjacentHTML("beforeend", template);
+  });
 }
