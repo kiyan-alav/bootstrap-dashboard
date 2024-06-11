@@ -190,31 +190,15 @@ export default function users() {
     ) as HTMLElement;
     if (userContainer) {
       renderUsers(users, userContainer);
+      addSearchEventListener()
     }
-  });
-
-  window.addEventListener("DOMContentLoaded", () => {
-    const searchInput = document.querySelector(
-      ".search-user"
-    ) as HTMLInputElement;
-    searchInput?.addEventListener("input", (e: Event) => {
-      const searchTerm = (e.target as HTMLInputElement).value;
-      const filteredUsers = getUsersData().filter((user) =>
-        user.name.firstname.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      const userContainer = document.querySelector(
-        "#user-container"
-      ) as HTMLElement;
-      if (userContainer) {
-        renderUsers(filteredUsers, userContainer);
-      }
-    });
   });
 
   return pageHtml;
 }
 
 function renderUsers(users: User[], container: HTMLElement) {
+  container.innerHTML = "";
   users.forEach((user) => {
     const template = `
     <div class="col-12 col-md-4">
@@ -258,5 +242,23 @@ function renderUsers(users: User[], container: HTMLElement) {
     `;
 
     container.insertAdjacentHTML("beforeend", template);
+  });
+}
+
+function addSearchEventListener() {
+  const searchInput = document.querySelector(
+    ".search-user"
+  ) as HTMLInputElement;
+  searchInput?.addEventListener("input", (e: Event) => {
+    const searchTerm = (e.target as HTMLInputElement).value;
+    const filteredUsers = getUsersData().filter((user) =>
+      user.name.firstname.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    const userContainer = document.querySelector(
+      "#user-container"
+    ) as HTMLElement;
+    if (userContainer) {
+      renderUsers(filteredUsers, userContainer);
+    }
   });
 }

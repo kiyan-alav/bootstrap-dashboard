@@ -194,6 +194,7 @@ export default function products() {
 
       if (productContainer) {
         renderProducts(products, productContainer);
+        addSearchEventListener();
       } else {
         console.error("Product elements not found.");
       }
@@ -201,24 +202,6 @@ export default function products() {
     .catch((error) => {
       console.error("Error fetching products:", error);
     });
-
-  window.addEventListener("DOMContentLoaded", () => {
-    const searchInput = document.querySelector(
-      ".search-product"
-    ) as HTMLInputElement;
-    searchInput.addEventListener("input", (e: Event) => {
-      const searchTerm = (e.target as HTMLInputElement).value;
-      const filteredProducts = getProductData().filter((product) =>
-        product.title.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      const productContainer = document.querySelector(
-        "#product-container"
-      ) as HTMLElement;
-      if (productContainer) {
-        renderProducts(filteredProducts, productContainer);
-      }
-    });
-  });
 
   return pageHtml;
 }
@@ -248,5 +231,24 @@ function renderProducts(products: Products[], container: HTMLElement) {
     `;
 
     container.insertAdjacentHTML("beforeend", template);
+  });
+}
+
+function addSearchEventListener() {
+  const searchInput = document.querySelector(
+    ".search-product"
+  ) as HTMLInputElement;
+  searchInput.addEventListener("input", (e: Event) => {
+    console.log("Hi");
+    const searchTerm = (e.target as HTMLInputElement).value;
+    const filteredProducts = getProductData().filter((product) =>
+      product.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    const productContainer = document.querySelector(
+      "#product-container"
+    ) as HTMLElement;
+    if (productContainer) {
+      renderProducts(filteredProducts, productContainer);
+    }
   });
 }
